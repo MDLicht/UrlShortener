@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModel
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.view.View
 import com.mdlicht.zb.simpleurlshortener.R
@@ -23,6 +24,15 @@ class HistoryItemViewModel(private val repository: ShortenRepository) : ViewMode
         view.context.let{
             it.showToast("${it.getString(R.string.msg_copy_to_clipboard)}\n$shortenUrl")
         }
+    }
+
+    fun onShareClick(view: View, item: Result) {
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, item.url)
+            type = "text/plain"
+        }
+        view.context.startActivity(intent)
     }
 
     fun onDeleteClick(view: View, item: Result) {

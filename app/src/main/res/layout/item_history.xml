@@ -18,7 +18,7 @@
                 android:textSize="12sp"
                 android:id="@+id/tvOriginUrl" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ivDelete" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/ivShare" android:layout_marginEnd="8dp"
                 app:layout_constraintHorizontal_bias="0.5"
                 android:ellipsize="end"
                 android:maxLines="1"
@@ -33,6 +33,15 @@
                 app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintDimensionRatio="1:1"
                 android:padding="8dp"/>
+        <ImageView
+                android:onClick="@{view -> vm.onShareClick(view, item)}"
+                android:layout_width="36dp"
+                android:layout_height="36dp" app:srcCompat="@drawable/ic_v_share"
+                android:id="@+id/ivShare"
+                app:layout_constraintTop_toTopOf="@+id/ivDelete"
+                app:layout_constraintBottom_toBottomOf="@+id/ivDelete" app:layout_constraintDimensionRatio="1:1"
+                android:padding="8dp" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/ivDelete" app:layout_constraintVertical_bias="1.0"/>
         <TextView
                 android:text="@{item.url}"
                 android:layout_width="0dp"
